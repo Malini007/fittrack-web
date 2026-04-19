@@ -23,7 +23,7 @@ export default function Dashboard({ token, onLogout }) {
 
   const headers = { Authorization: `Bearer ${token}` };
 
-  const fetchData = async () => {
+  const fetchData = React.useCallback(async () => {
     try {
       const [statsRes, runsRes] = await Promise.all([
         axios.get(`${API}/runs/stats`, { headers }),
@@ -34,9 +34,9 @@ export default function Dashboard({ token, onLogout }) {
     } catch {
       setError('Failed to load data');
     }
-  };
+  }, [token]);
 
-  useEffect(() => { fetchData(); }, [token]);
+  useEffect(() => { fetchData(); }, [fetchData]);
 
   const handleLog = async () => {
     try {
