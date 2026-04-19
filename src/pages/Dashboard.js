@@ -36,7 +36,7 @@ export default function Dashboard({ token, onLogout }) {
     }
   };
 
-  useEffect(() => { fetchData(); }, []);
+  useEffect(() => { fetchData(); }, [token]);
 
   const handleLog = async () => {
     try {
