@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 
-const API = 'http://localhost:8080/api';
+const API = process.env.REACT_APP_API_URL || 'http://localhost:8080/api';
 
 export default function Login({ onLogin }) {
   const [tab, setTab] = useState(0);
