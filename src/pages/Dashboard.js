@@ -26,8 +26,8 @@ export default function Dashboard({ token, onLogout }) {
   const fetchData = React.useCallback(async () => {
     try {
       const [statsRes, runsRes] = await Promise.all([
-        axios.get(`${API}/runs/stats`, { headers }),
-        axios.get(`${API}/runs/history`, { headers })
+        axios.get(`${API}/runs/stats`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${API}/runs/history`, { headers: { Authorization: `Bearer ${token}` } })
       ]);
       setStats(statsRes.data.stats);
       setRuns(runsRes.data);
